@@ -1,0 +1,10 @@
+.hv-100 {
+    height: 100vh !important;
+}
+
+.wv-100 {
+    width: 100% !important;
+}
+.hover-background-gray:hover {
+    background-color: lightgray !important;
+}
