@@ -8,3 +8,6 @@
 .hover-background-gray:hover {
     background-color: lightgray !important;
 }
+.vh-100-min {
+    min-height: 100vh !important;
+}
