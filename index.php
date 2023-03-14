@@ -1,5 +1,8 @@
 <?php
+require('connection.php');
 include 'header.php';
+$Connection = new Connection();
+$Connection->setConnection();
 ?>
 <body class="wv-100 hv-100 bg-primary d-flex flex-column">
 <div class="container m-auto" style="text-align: center">
