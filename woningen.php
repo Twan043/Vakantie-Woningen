@@ -5,8 +5,50 @@ include 'header.php';
     <div class="container mb-auto">
         <div class="row">
             <div class="col-lg-3">
-                <div class="m-lg-3 mt-3 bg-white">
-                    test
+                <div class="m-lg-3 mt-3 bg-white h-auto">
+                    <div class="m-3">
+                        <h3 class="pt-3">Filter:</h3>
+                        <h6 class="pt-1">Selecteer eigenschap(pen)</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                    </div>
+                    <div class="m-3 pb-3">
+                        <h6 class="pt3">Selecteer ligging(en)</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Default checkbox
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9">
