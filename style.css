@@ -11,3 +11,12 @@
 .vh-100-min {
     min-height: 100vh !important;
 }
+
+.bg-primary
+{
+    background-color: #dbd1b4 !important;
+}
+.bg-secondary
+{
+    background-color: #0054DD !important;
+}
