@@ -20,3 +20,13 @@
 {
     background-color: #0054DD !important;
 }
+
+@media only screen and (max-width: 425px) {
+    .responsive-display-none-self {
+        display: none !important;
+    }
+
+    .arrows-responsive-self {
+        margin: 5px !important;
+    }
+}
