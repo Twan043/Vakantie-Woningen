@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 ?>
-<body>
+<body class="bg-primary">
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
