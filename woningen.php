@@ -145,7 +145,7 @@ $con = $connectionClass->setConnection();
                                             }
                                             ?> </h6>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="https://558821.klas4s21.mid-ica.nl/Vakantie-Woningen/single-woning?id=<?php echo $row['woningnr']; ?>" class="btn btn-success">Go somewhere</a>
+                                        <a href="https://558821.klas4s21.mid-ica.nl/Vakantie-Woningen/single-woning.php?id=<?php echo $row['woningnr']; ?>" class="btn btn-success">Go somewhere</a>
                                     </div>
                                 </div>
                             </div>
