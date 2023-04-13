@@ -60,15 +60,7 @@ if (isset($_GET['submit'])) {
             <div class="col-lg-9">
                 <div class="row" id="houseField">
                     <?php
-                    $sql = "SELECT DISTINCT w.woningnr, w.titel, w.omschrijving
-                            FROM woningen w
-                            INNER JOIN (
-                              SELECT woningnr
-                              FROM woningen_liggingen
-                              WHERE liggingen_id IN (1, 2)
-                              GROUP BY woningnr
-                              HAVING COUNT(DISTINCT liggingen_id) = 2
-                            ) wl ON w.woningnr = wl.woningnr;";
+                    $sql = "SELECT * FROM woningen";
                     $result = mysqli_query($con, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
