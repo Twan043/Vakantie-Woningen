@@ -108,6 +108,7 @@ function searchObject() {
                         "                                        </div>\n" +
                         "                                    </div>\n" +
                         "                                </div>");
+                    console.log(i);
                 }
             }
         })

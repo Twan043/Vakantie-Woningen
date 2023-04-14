@@ -26,46 +26,57 @@ if ($data[0] == 0 && $data[1] == "" && $data[2] == 0 && $data[3] == "") {
 
         echo json_encode($message);
     }
-} else if ($data[2] == 0 && $data[3] == "") {
-    $sql = "SELECT DISTINCT w.woningnr, w.titel, w.omschrijving
+} else if ($data[0] == 0 && $data[1] == "") {
+    $sql2 = "SELECT DISTINCT w.woningnr, w.titel, w.omschrijving, w.hoofd_afbeelding_url
                             FROM woningen w
                             INNER JOIN (
-                              SELECT woningnr
+        SELECT woningnr
                               FROM woningen_liggingen
-                              WHERE liggingen_id IN (" . $data[1] . ")
+                              WHERE liggingen_id IN (" . $data[3] . ")
                               GROUP BY woningnr
-                              HAVING COUNT(DISTINCT liggingen_id) = " . $data[0] . " ) wl ON w.woningnr = wl.woningnr;";
-    $result = mysqli_query($con, $sql);
+                              HAVING COUNT(DISTINCT liggingen_id) = " . $data[2] . " ) wl ON w.woningnr = wl.woningnr;";
+    $result2 = mysqli_query($con, $sql2);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $message = ["Status" => 200, "Message" => "Success", "Data" => [$row]];
+    $rows = array();
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $rows[] = $row;
+    }
+    $count = mysqli_num_rows($result2);
+    $response = array('count' => $count, 'rows' => $rows);
 
-            echo json_encode($message);
-        }
+    if ($count > 0) {
+        $message = ["Status" => 200, "Message" => "Success", "Data" => $response];
+
+        echo json_encode($message);
     } else {
         $message = ["Status" => 404, "Message" => "No objects found"];
 
         echo json_encode($message);
     }
-} else if ($data[0] == 0 && $data[1] == "") {
-    $sql = "SELECT DISTINCT w.woningnr, w.titel, w.omschrijving
+} else if ($data[2] == 0 && $data[3] == "") {
+    $sql = "SELECT DISTINCT w.woningnr, w.titel, w.omschrijving, w.hoofd_afbeelding_url
                             FROM woningen w
                             INNER JOIN (
                               SELECT woningnr
                               FROM woningen_eigenschappen
-                              WHERE eigenschappen_id IN (" . $data[3] . ")
+                              WHERE eigenschappen_id IN (" . $data[1] . ")
                               GROUP BY woningnr
-                              HAVING COUNT(DISTINCT eigenschappen_id) = " . $data[2] . "
-                            ) we ON w.woningnr = wl.woningnr;";
-    $result = mysqli_query($con, $sql);
+                              HAVING COUNT(DISTINCT eigenschappen_id) = " . $data[0] . "
+                            ) we ON w.woningnr = we.woningnr;";
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $message = ["Status" => 200, "Message" => "Success", "Data" => [$row]];
+    $result2 = mysqli_query($con, $sql);
 
-            echo json_encode($message);
-        }
+    $rows = array();
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $rows[] = $row;
+    }
+    $count = mysqli_num_rows($result2);
+    $response = array('count' => $count, 'rows' => $rows);
+
+    if ($count > 0) {
+        $message = ["Status" => 200, "Message" => "Success", "Data" => $response];
+
+        echo json_encode($message);
     } else {
         $message = ["Status" => 404, "Message" => "No objects found"];
 
@@ -77,24 +88,29 @@ if ($data[0] == 0 && $data[1] == "" && $data[2] == 0 && $data[3] == "") {
                             INNER JOIN (
                               SELECT woningnr
                               FROM woningen_liggingen
-                              WHERE liggingen_id IN (" . $data[1] . ")
+                              WHERE liggingen_id IN (" . $data[3] . ")
                               GROUP BY woningnr
-                              HAVING COUNT(DISTINCT liggingen_id) = " . $data[0] . " ) wl ON w.woningnr = wl.woningnr
+                              HAVING COUNT(DISTINCT liggingen_id) = " . $data[2] . " ) wl ON w.woningnr = wl.woningnr
                             INNER JOIN (
                               SELECT woningnr
                               FROM woningen_eigenschappen
-                              WHERE eigenschappen_id IN (" . $data[3] . ")
+                              WHERE eigenschappen_id IN (" . $data[1] . ")
                               GROUP BY woningnr
-                              HAVING COUNT(DISTINCT eigenschappen_id) = " . $data[2] . "
-                            ) we ON w.woningnr = wl.woningnr;";
-    $result = mysqli_query($con, $sql);
+                              HAVING COUNT(DISTINCT eigenschappen_id) = " . $data[0] . "
+                            ) we ON w.woningnr = we.woningnr;";
+    $result2 = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $message = ["Status" => 200, "Message" => "Success", "Data" => [$row]];
+    $rows = array();
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $rows[] = $row;
+    }
+    $count = mysqli_num_rows($result2);
+    $response = array('count' => $count, 'rows' => $rows);
 
-            echo json_encode($message);
-        }
+    if ($count > 0) {
+        $message = ["Status" => 200, "Message" => "Success", "Data" => $response];
+
+        echo json_encode($message);
     } else {
         $message = ["Status" => 404, "Message" => "No objects found"];
 
