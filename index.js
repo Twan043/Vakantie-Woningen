@@ -2,7 +2,8 @@ let lengthEigenschappen;
 let lengthLigging;
 let liggingen = [];
 let eigenschappen = [];
-let data = [];
+let data;
+let verkocht;
 
 function addAtributeLiggingen(id) {
     console.log(document.getElementById(id).checked);
@@ -72,12 +73,43 @@ function searchObject() {
     fetch(url,
         {
             method: "POST",
-            headers: {"Content-type" :"application/json"},
+            headers: {"Content-type": "application/json"},
             body: JSON.stringify(data)
         })
-        .then((response) => response.json())
-        .then((json) =>  {
-            console.log(json);
+        .then(response => response.json())
+        .then((json) => {
+            data = json;
+
+            console.log(data);
+
+            $( "#houseField" ).empty();
+
+            if (data.Status == 404) {
+                $( "#houseField" ).empty();
+
+                $( "#houseField" ).append("<div class=\"alert alert-danger mt-3\">Niks gevonden</div>");
+            } else {
+                for (let i = 0; i < data.Data.rows.length; i++) {
+                    if (data.Data.rows[i].verkocht == 1) {
+                        verkocht = "<div class=\"sold-overlay\">Verkocht</div>";
+                    } else {
+                        verkocht = "";
+                    }
+                    $( "#houseField" ).append("<div class=\"col-lg-4\">\n" +
+                        "                                    <div class=\"mt-3 m-lg-3\">\n" +
+                        "                                        <div class=\"card\" style=\"width: 18rem;\">\n" +
+                        "                                            <img src=\"" + data.Data.rows[i].hoofd_afbeelding_url + "\" class=\"card-img-top\" alt=\"...\">\n" +
+                        "                                            " + verkocht +
+                        "                                            <div class=\"card-body\">\n" +
+                        "                                                <h5 class=\"card-title\">" + data.Data.rows[i].titel + "</h5>\n" +
+                        "                                                <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n" +
+                        "                                                <a href=\"https://558821.klas4s21.mid-ica.nl/Vakantie-Woningen/single-woning.php?id=" + data.Data.rows[i].woningnr + "\" class=\"btn btn-success\">Go somewhere</a>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>");
+                }
+            }
         })
         .catch((error) => {
                 console.log(error);
